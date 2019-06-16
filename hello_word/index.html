@@ -11,8 +11,8 @@
 <body>
     <div id="app">
         Hello {{nombre}}!
-        <a href="https://google.com" target="_blank">
-            Go to Google
+        <a v-bind:href="url" target="_blank">
+            Go to {{pagina}}
         </a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -20,7 +20,9 @@
         let app = new Vue({
             el: '#app',
             data: {
-                nombre: 'word'
+                nombre: 'word',
+                url: 'https://google.com',
+                pagina: 'Google'
             }
         })
     </script>
