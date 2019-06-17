@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-show="show">
+            <h1>{{title | uppercase}}</h1>
+            <h2>{{subtitle | lowercase}}</h2>
+            <h3>{{text | capitalize}}</h3>
+        </div>
+        <div v-show="!show">
+            It's hidden :o !!
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                title: 'Welcome,',
+                subtitle: 'You are learning VueJs',
+                text: 'Good Luck baby!',
+                url: 'https://google.com',
+                page: 'Google',
+                show: true
+            },
+            filters: {
+                uppercase:
+                    function (str) {
+                        return str.toUpperCase()
+                    },
+                lowercase:
+                    function (str) {
+                        return str.toLowerCase()
+                    },
+                capitalize:
+                    function (str) {
+                        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+                    }
+            }
+        })
+    </script>
+</body>
+
+</html>
