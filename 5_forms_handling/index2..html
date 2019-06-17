@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="colours" type="text" name="u_name" placeholder="Enter your name" v-model="u_name">
+        <p> Your name in uppercase is: {{u_name | uppercase}}</p>
+        <form v-on:submit.prevent="submit" action="" method="GET">
+            <h2>What are your favorite colours?</h2>
+
+            <label>
+                <input v-model="colours" type="checkbox" id="db" value="Dark Blue">
+                Dark-Blue
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="yl" value="Yellow">
+                Yellow
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="gr" value="Green">
+                Green
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="rd" value="Red">
+                Red
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="or" value="Orange">
+                Orange
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="bl" value="Black">
+                Black
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="br" value="Brown">
+                Brown
+            </label>
+
+            <button type="submit">
+                Send
+            </button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                u_name: '',
+                colours: []
+            },
+            filters: {
+                uppercase:
+                    function (str) {
+                        return str.toUpperCase()
+                    }
+
+            },
+            methods: {
+                submit: function () {
+                    console.log('The submit method is executed')
+                    console.log(this.colours)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
