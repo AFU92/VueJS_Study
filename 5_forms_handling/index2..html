@@ -14,20 +14,36 @@
         <p> Your name in uppercase is: {{u_name | uppercase}}</p>
         <form v-on:submit.prevent="submit" action="" method="GET">
             <h2>What are your favorite colours?</h2>
-            <input v-model="colours" type="checkbox" id="db" value="Dark Blue">
-            <label for="db"> Dark-Blue</label>
-            <input v-model="colours" type="checkbox" id="yl" value="Yellow">
-            <label for="yl"> Yellow</label>
-            <input v-model="colours" type="checkbox" id="gr" value="Green">
-            <label for="gr"> Green</label>
-            <input v-model="colours" type="checkbox" id="rd" value="Red">
-            <label for="rd">Red</label>
-            <input v-model="colours" type="checkbox" id="or" value="Orange">
-            <label for="or"> Orange</label>
-            <input v-model="colours" type="checkbox" id="bl" value="Black">
-            <label for="bl">Black</label>
-            <input v-model="colours" type="checkbox" id="br" value="Brown">
-            <label for="br"> Brown</label>
+
+            <label>
+                <input v-model="colours" type="checkbox" id="db" value="Dark Blue">
+                Dark-Blue
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="yl" value="Yellow">
+                Yellow
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="gr" value="Green">
+                Green
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="rd" value="Red">
+                Red
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="or" value="Orange">
+                Orange
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="bl" value="Black">
+                Black
+            </label>
+            <label>
+                <input v-model="colours" type="checkbox" id="br" value="Brown">
+                Brown
+            </label>
+
             <button type="submit">
                 Send
             </button>
