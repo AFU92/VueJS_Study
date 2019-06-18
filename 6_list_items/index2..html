@@ -10,14 +10,12 @@
 
 <body>
     <div id="app">
-
         <form @submit.prevent="submit" action="" method="GET">
             <h2>What are your favorite colours?</h2>
-            <template v-for="colours list">
-
-                <input v-model="selected_colours" type="checkbox" v-bind:id="colour.value" v-bind:value="colour.value">
-                <label v-bind:for="colour.value">
-                    {{colour.name}}
+            <template v-for="one_colour in colours">
+                <input v-model="selected_colours" type="checkbox" v-bind:id="one_colour.value" v-bind:value="one_colour.value">
+                <label v-bind:for="one_colour.value">
+                    {{one_colour.name}}
                 </label>
             </template>
 
@@ -40,8 +38,7 @@
                     { name: "Black", value: "Black" },
                     { name: "Brown", value: "Brown" }],
                 selected_colours: [
-                ],
-
+                ]
             },
             methods: {
                 submit: function () {
