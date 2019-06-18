@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <form @submit.prevent="submit" action="" method="GET">
+            <h2>What are your favorite colours?</h2>
+            <template v-for="colours list">
+
+                <input v-model="selected_colours" type="checkbox" v-bind:id="colour.value" v-bind:value="colour.value">
+                <label v-bind:for="colour.value">
+                    {{colour.name}}
+                </label>
+            </template>
+
+            <button type="submit">
+                Send
+            </button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                colours: [
+                    { name: "Dark-Blue", value: "Dark Blue" },
+                    { name: "Yellow", value: "Yellow" },
+                    { name: "Green", value: "Green" },
+                    { name: "Red", value: "Red" },
+                    { name: "Orange", value: "Orange" },
+                    { name: "Black", value: "Black" },
+                    { name: "Brown", value: "Brown" }],
+                selected_colours: [
+                ],
+
+            },
+            methods: {
+                submit: function () {
+                    console.log('The submit method is executed')
+                    console.log(this.selected_colours)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
