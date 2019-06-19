@@ -13,10 +13,10 @@
         <form @submit.prevent="submit" action="" method="GET">
             <h2>What are your favorite colours?</h2>
             <template v-for="one_colour in colours">
-                <input v-model="selected_colours" type="checkbox" v-bind:id="one_colour.value" v-bind:value="one_colour.value">
-                <label v-bind:for="one_colour.value">
-                    {{one_colour.name}}
-                </label>
+                <colours>
+
+                </colours>
+
             </template>
 
             <button type="submit">
@@ -26,6 +26,15 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript">
+        Vue.component('colours', {
+            template: ` 
+            <input v-model="selected_colours" type="checkbox" v-bind:id="one_colour.value" v-bind:value="one_colour.value">
+                <label v-bind:for="one_colour.value">
+                    {{one_colour.name}}
+                </label>
+            `
+        })
+
         let app = new Vue({
             el: '#app',
             data: {
