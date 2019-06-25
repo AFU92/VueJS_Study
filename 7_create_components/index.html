@@ -12,10 +12,10 @@
     <div id="app">
         <form @submit.prevent="submit" action="" method="GET">
             <h2>What are your favorite colours?</h2>
-            <template v-for="one_colour in colours">
-                <colours>
+            <template v-for="for_colour in colours">
+                <colour :colour_prop="for_colour" @checked="select_colour">
 
-                </colours>
+                </colour>
 
             </template>
 
@@ -26,12 +26,21 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript">
-        Vue.component('colours', {
+        Vue.component('colour', {
+            props: ['colour_prop'],
+            methods: {
+                onchange: function (event) {
+                    this.$emit('checked', this.colour_prop.value,
+                        event.target.checked)
+                }
+            },
             template: ` 
-            <input v-model="selected_colours" type="checkbox" v-bind:id="one_colour.value" v-bind:value="one_colour.value">
-                <label v-bind:for="one_colour.value">
-                    {{one_colour.name}}
+            <div>
+                <input type="checkbox" v-bind:id="colour_prop.value" v-bind:value="colour_prop.value" @change="onchange">
+                <label v-bind:for="colour_prop.value">
+                    {{colour_prop.name}}
                 </label>
+            </div>
             `
         })
 
@@ -53,6 +62,14 @@
                 submit: function () {
                     console.log('The submit method is executed')
                     console.log(this.selected_colours)
+                },
+                select_colour: function (colour, checked) {
+                    if (checked) {
+                        this.selected_colours.push(colour)
+                    } else {
+                        let index = this.selected_colours.indexOf(colour)
+                        this.selected_colours.splice(index, 1)
+                    }
                 }
             }
         })
