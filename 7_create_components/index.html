@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <form @submit.prevent="submit" action="" method="GET">
+            <h2>What are your favorite colours?</h2>
+            <template v-for="for_colour in colours">
+                <colour :colour_prop="for_colour" @checked="select_colour">
+
+                </colour>
+
+            </template>
+
+            <button type="submit">
+                Send
+            </button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        Vue.component('colour', {
+            props: ['colour_prop'],
+            methods: {
+                onchange: function (event) {
+                    this.$emit('checked', this.colour_prop.value,
+                        event.target.checked)
+                }
+            },
+            template: ` 
+            <div>
+                <input type="checkbox" v-bind:id="colour_prop.value" v-bind:value="colour_prop.value" @change="onchange">
+                <label v-bind:for="colour_prop.value">
+                    {{colour_prop.name}}
+                </label>
+            </div>
+            `
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                colours: [
+                    { name: "Dark-Blue", value: "Dark Blue" },
+                    { name: "Yellow", value: "Yellow" },
+                    { name: "Green", value: "Green" },
+                    { name: "Red", value: "Red" },
+                    { name: "Orange", value: "Orange" },
+                    { name: "Black", value: "Black" },
+                    { name: "Brown", value: "Brown" }],
+                selected_colours: [
+                ]
+            },
+            methods: {
+                submit: function () {
+                    console.log('The submit method is executed')
+                    console.log(this.selected_colours)
+                },
+                select_colour: function (colour, checked) {
+                    if (checked) {
+                        this.selected_colours.push(colour)
+                    } else {
+                        let index = this.selected_colours.indexOf(colour)
+                        this.selected_colours.splice(index, 1)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
